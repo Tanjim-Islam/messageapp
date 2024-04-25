@@ -2,6 +2,8 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Nunito } from 'next/font/google'
 import ToasterContext from "./context/ToasterContext";
+import AuthContext from "./context/AuthContext";
+
 
 const nunito = Nunito({ subsets: ['latin'] })
 
@@ -18,7 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={nunito.className}>
-        <ToasterContext />
+        <AuthContext>
+          <ToasterContext />
+          {children}
+        </AuthContext>
         {children}
       </body>
     </html>
